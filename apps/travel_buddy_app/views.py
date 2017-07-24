@@ -65,7 +65,6 @@ def dashboard(request):
 		messages.error(request, "You are not logged in", extra_tags="login")
 		return redirect('/')
 	context = {
-		# 'other_places': JoinedTravels.objects.all().exclude(destination = Destinations.objects.filter(user = Users.objects.get(id = request.session['user_id']))),
 		'other_places': Destinations.objects.all().exclude(joinedtravels__user__id = request.session['user_id']),
 		'my_places': JoinedTravels.objects.filter(user__id = request.session['user_id'])
 	}
