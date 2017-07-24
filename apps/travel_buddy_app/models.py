@@ -22,7 +22,9 @@ class UserManager(models.Manager):
 class DestinationManager(models.Manager):
 	def validate(self, des_data):
 		errors = {}
-		
+		today = time.strftime("%Y-%m-%d")
+		print des_data['from']
+
 		if len(des_data['des_name']) < 1:
 			errors['des_name'] = "Destination name can not be empty"
 		if len(des_data['desc']) < 1:
@@ -31,7 +33,7 @@ class DestinationManager(models.Manager):
 			errors['from'] = "Please enter a from travel date"
 		if len(des_data['to']) < 1:
 			errors['to'] = "Please enter a to travel date"
-		if des_data['from'] < time.strftime("%m/%d/%Y"):
+		if des_data['from'] < today:
 			errors['from'] = "From date should be a future date"
 		if des_data['to'] < des_data['from']:
 			errors['to'] = "To date should be after your from date"
