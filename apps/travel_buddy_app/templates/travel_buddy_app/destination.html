@@ -6,17 +6,19 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'travel_buddy_app/css/style_dashboard.css'%}">
 </head>
 <body>
-<nav><a href="/travels">Home</a> <a href="">Logout</a></nav>
+<nav><a href="/travels">Home</a> <a href="/logout">Logout</a></nav>
 <h3>The destination title</h3>
 <div class="indent">
-	<p>Planned By: </p>
-	<p>Description: </p>
-	<p>Travel Date From: </p>
-	<p>Travel Date To: </p>
+	<p>Planned By: {{place.user.name}}</p>
+	<p>Description: {{place.desc}}</p>
+	<p>Travel Date From: {{place.travel_from}}</p>
+	<p>Travel Date To: {{place.travel_to}}</p>
 </div>
 <h3>Other users' joing the trip:</h3>
 <div class="indent">
-	<p></p>
+	{%for user in users%}
+	<p>{{user.user.name}}</p>
+	{% endfor %}
 </div>
 </body>
 </html>

@@ -31,7 +31,7 @@ class DestinationManager(models.Manager):
 			errors['from'] = "Please enter a from travel date"
 		if len(des_data['to']) < 1:
 			errors['to'] = "Please enter a to travel date"
-		if des_data['from'] < time.strftime():
+		if des_data['from'] < time.strftime("%m/%d/%Y"):
 			errors['from'] = "From date should be a future date"
 		if des_data['to'] < des_data['from']:
 			errors['to'] = "To date should be after your from date"
